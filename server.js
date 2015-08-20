@@ -24,16 +24,16 @@ app.get('/', function(req, res){
 app.get('/book', function (req, res) {
     var data = {
         "error":1,
-        "Books":""
+        "Book":""
     };
 
     connection.query("SELECT * from book", function(err, rows, fields){
         if(rows.length != 0){
             data["error"] = 0;
-            data["Books"] = rows;
+            data["Book"] = rows;
             res.json(data);
         }else{
-            data["Books"] = 'No books Found..';
+            data["Book"] = 'No books Found..';
             res.json(data);
         }
     });
@@ -50,15 +50,15 @@ app.post('/book', function(req, res){
     if(!!Bookname && !!Authorname && !!Price){
         connection.query("INSERT INTO book VALUES('',?,?,?)",[Bookname,Authorname,Price],function(err, rows, fields){
             if(!!err){
-                data["Books"] = "Error Adding data";
+                data["Book"] = "Error Adding data";
             }else{
                 data["error"] = 0;
-                data["Books"] = "Book Added Successfully.";
+                data["Book"] = "Book Added Successfully.";
             }
             res.json(data);
         });
     }else{
-        data["Books"] = "Please provide all required data (i.e : Bookname, Authorname, Price)";
+        data["Book"] = "Please provide all required data (i.e : Bookname, Authorname, Price)";
         res.json(data);
     }
 });
@@ -74,10 +74,10 @@ app.put('/book', function(req, res){
     if(!!Bookname && !!Authorname && !!Price){
         connection.query("UPDATE book SET BookName=?, AuthorName=?, Price=? WHERE id=?" ,[Bookname,Authorname,Price,Id],function(err, rows, fields){
             if(!!err){
-                data["Books"] = "Error Updating data";
+                data["Book"] = "Error Updating data";
             }else{
                 data["error"] = 0;
-                data["Books"] = "Updated Book Successfully.";
+                data["Book"] = "Updated Book Successfully.";
             }
             res.json(data);
         });
@@ -95,15 +95,15 @@ app.delete('/book', function(req, res){
     if(!!Id){
         connection.query("DELETE FROM book WHERE id=?" ,[Id],function(err, rows, fields){
             if(!!err){
-                data["Books"] = "Error deleting data";
+                data["Book"] = "Error deleting data";
             }else{
                 data["error"] = 0;
-                data["Books"] = "Delete Book Successfully.";
+                data["Book"] = "Delete Book Successfully.";
             }
             res.json(data);
         });
     }else{
-        data["Books"] = "Please provide all required data (i.e : id)";
+        data["Book"] = "Please provide all required data (i.e : id)";
         res.json(data);
     }
 });
