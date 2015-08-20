@@ -6,7 +6,7 @@ var bodyParser = require('body-parser');
 var connection = mysql.createConnection({
     host        : 'localhost',
     user        : 'root',
-    password    : '',
+    password    : 'root',
     database    : 'books',
 });
 
@@ -24,7 +24,7 @@ app.get('/', function(req, res){
 app.get('/book', function (req, res) {
     var data = {
         "error":1,
-        "Book":""
+        "Books":""
     };
 
     connection.query("SELECT * from book", function(err, rows, fields){
