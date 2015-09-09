@@ -1,24 +1,15 @@
 {
   "name": "node-api",
-  "version": "1.0.0",
-  "description": "Build rest api with node js Auth: Frank Ty",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon ./bin/www"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/sochea09/node-api.git"
-  },
-  "author": "Frank Ty",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/sochea09/node-api/issues"
-  },
-  "homepage": "https://github.com/sochea09/node-api#readme",
   "dependencies": {
-    "body-parser": "^1.13.3",
-    "express": "^4.13.3",
-    "mysql": "^2.8.0"
+    "body-parser": "~1.0.1",
+    "crypto": "~0.0.3",
+    "express": "~4.0.0",
+    "mysql": "~2.5.0",
+    "sequelize": "~1.7.0",
+    "debug": "~2.2.0"
   }
 }
